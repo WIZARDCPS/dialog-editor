@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dialog Editor</title>
+        <link href="/styles.css" rel="stylesheet"/>
+        <link href="/dialog.css" rel="stylesheet">
+        <script src="/dialog.js"></script>
+    </head>
+    <body>
+        <header>
+            <img src="/assets/logo.png" alt="Logo">
+            Dialog Editor
+        </header>
+        <main>
+            <div class="preview-wrapper">
+                <div class="dialog" id="dialog">
+                    <div class="title">
+                        <img src="https://gtpshax.github.io/DialogGTPS/src/assets/items/32.png" alt="32">
+                        Hello World!
+                    </div>
+                </div>
+            </div>
+            <div class="editor-wrapper">
+                <div class="code">
+                    <div class="line-numbers" id="line-numbers"></div>
+                    <textarea id="code" spellcheck="false" placeholder="Start coding..." oninput="codeEditor()"></textarea>
+            </div>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
