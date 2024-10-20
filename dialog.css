@@ -1,23 +1,28 @@
 :root {
     --default-color: #FEE6BA;
+    --quick-exit-opacity: 1;
 }
 
 .dialog-wrapper {
     position: relative;
     height: fit-content !important;
+    width: 100%;
+    max-width: 95vw ;
+    overflow: scroll;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .dialog {
     max-height: 40vh;
+    max-width: 1000px;
     padding: 10px;
     height: fit-content;
-    max-width: 100%;
     background-color: #3B85AC;
     border: 2px solid #88B8CC;
     box-shadow: 1px 1px 0 black;
     border-radius: 5px;
     position: relative;
     color: var(--default-color);
-    word-break: break-word;
     overflow: auto;
 }
 .dialog:before {
@@ -39,6 +44,10 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    width: fit-content;
+}
+.title > span {
+    white-space: nowrap;
 }
 
 .quick_exit {
@@ -51,7 +60,8 @@
     align-items: center;
     font-weight: bold;
     position: absolute;
-    top: -7px;
-    right: -7px;
+    top: 7px;
+    right: 7px;
     z-index: 2;
+    opacity: var(--quick-exit-opacity);
 }
