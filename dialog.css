@@ -2,17 +2,23 @@
     --default-color: #FEE6BA;
 }
 
+.dialog-wrapper {
+    position: relative;
+    height: fit-content !important;
+}
 .dialog {
     max-height: 40vh;
     padding: 10px;
     height: fit-content;
+    max-width: 100%;
     background-color: #3B85AC;
     border: 2px solid #88B8CC;
     box-shadow: 1px 1px 0 black;
     border-radius: 5px;
     position: relative;
     color: var(--default-color);
-    overflow: scroll;
+    word-break: break-word;
+    overflow: auto;
 }
 .dialog:before {
     content: '';
@@ -22,7 +28,9 @@
     left: 0;
     top: 0;
     border-left: 1.2px solid black;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .title {
@@ -31,4 +39,19 @@
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.quick_exit {
+    padding: 5px;
+    width: 10px;
+    height: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    z-index: 2;
 }

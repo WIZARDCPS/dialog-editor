@@ -5,7 +5,7 @@ function codeEditor() {
     preview = document.getElementById('dialog');
     
     // Reset preview
-    preview.innerHTML += 'a';
+    preview.innerHTML += input;
     
     line.forEach(item => {
         item = item.split("|");

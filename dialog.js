@@ -16,3 +16,7 @@ dialog.add("set_default_color", (data) => {
     console.log(data);
     dialog.propt.style.setProperty("--default-color", getColor(data[1] ? data[1] : "`o"));
 });
+dialog.add("add_quick_exit", (data) => {
+    console.log(data);
+    dialog.propt.style.setProperty("--default-color", getColor(data[1] ? data[1] : "`o"));
+});
