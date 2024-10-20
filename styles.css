@@ -53,6 +53,7 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 20px;
 }
 
 .editor-wrapper {
