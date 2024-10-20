@@ -8,7 +8,7 @@ function codeEditor() {
     if (!livePreview) return;
     
     let
-    input = document.getElementById('code').value,
+    input = (document.getElementById('code').value).replace(/<CR>/g, "<br>"),
     line = input.split("\n")
     preview = document.getElementById('dialog');
     

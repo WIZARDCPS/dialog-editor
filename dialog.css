@@ -8,7 +8,7 @@
     height: fit-content !important;
     width: 100%;
     max-width: 95vw ;
-    overflow: scroll;
+    overflow: auto;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -43,8 +43,9 @@
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     width: fit-content;
+    white-space: nowrap;
 }
 .title > span {
     white-space: nowrap;

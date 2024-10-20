@@ -31,10 +31,10 @@ dialog.add("add_label_with_icon", (data) => {
     
     console.log(text)
     
-    dialog.value += `<div style="font-size: ${small ? "1" : "1.5"}rem;" class="title"><img style="width: ${small ? "20" : "30"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}">${text}</div>`;
+    dialog.value += `<div style="font-size: ${small ? "1" : "1.5"}rem;" class="title"><img style="width: ${small ? "20" : "30"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
 });
 dialog.add ("add", (data)=> {
-    if (data < 1) return;
+    if (!data[1]) return;
     dialog.value += data[1];
 })
 
@@ -127,7 +127,7 @@ function coloringText(text) {
     let result = '';
 
     for (let i = 0; i < parts.length; i++) {
-        result += `<span style="color: ${getColor(parts[i].color)}">${parts[i].text}</span>`;
+        result += `<span style="color: ${getColor(parts[i].color)}">${parts[i].text} </span>`;
         if (i == parts.length - 1) return result;
     }
 }
