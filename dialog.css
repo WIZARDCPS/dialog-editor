@@ -1,6 +1,7 @@
 :root {
     --default-color: #FEE6BA;
     --quick-exit-opacity: 1;
+    --toggle-render: auto;
 }
 
 .dialog-wrapper {
@@ -8,7 +9,7 @@
     height: fit-content !important;
     width: 100%;
     max-width: 95vw ;
-    overflow: auto;
+    overflow: var(--toggle-render);
     padding: 20px;
     box-sizing: border-box;
 }
@@ -42,7 +43,7 @@
 
 .title {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -50,7 +51,7 @@
     white-space: nowrap;
 }
 .title > img {
-    width: 25px;
+    width: 20px;
 }
 .title > span {
     white-space: nowrap;

@@ -8,6 +8,7 @@
         <meta name="keywords" content="gtps, gtps3, GOLDPS, gtps4, growtopia private server, growtopia private, growtopia server, growtopia proxy, growtopia forums, growtopia internal, growtopia hack, growtopia account, growtools, gtpshax, editor, dialog editor, growplus">
         <meta name="author" content="GrowPlus">
         <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
         <link href="/styles.css" rel="stylesheet"/>
         <link href="/dialog.css" rel="stylesheet">
         <script src="/dialog.js"></script>
@@ -53,7 +54,7 @@
                 </div>
             </div>
             <div class="preview-wrapper">
-                <div class="dialog-wrapper">
+                <div class="dialog-wrapper" id="preview">
                     <div class="dialog quick_exit">&#10005</div>
                     <div class="dialog" id="dialog">
                         <div class="title">
@@ -64,7 +65,13 @@
                 </div>
                 <div class="editor-wrapper respo">
                     <div class="editor">
-                        <!-- hiaha -->
+                        <div class="btn">
+                            <button class="saweria-wrapper" onclick="saveImage()">
+                                <div class="saweria">
+                                    Save as image
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -179,6 +179,10 @@ textarea::-webkit-scrollbar-thumb {
     max-height: 20%;
 }
 
+.respo > .editor {
+    padding: 10px;
+}
+
 a:hover, button:hover, input[type=checkbox]:hover, label:hover {
     opacity: .7;
     cursor: pointer;

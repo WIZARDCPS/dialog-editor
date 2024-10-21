@@ -23,10 +23,6 @@ function codeEditor(force = true) {
     });
     
     preview.innerHTML = dialog.value;
-
-    /*for (let i = 0; i < lines; i++) {
-        dialog.innerHTML = textarea.value;
-    }*/
 }
 
 function run() {

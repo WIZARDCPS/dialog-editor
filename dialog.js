@@ -12,6 +12,22 @@ const dialog = {
     }
 };
 
+function saveImage() {
+    dialog.propt.style.setProperty("--toggle-render", "visible");
+    setTimeout(()=>{
+        domtoimage.toPng(document.getElementById("preview"))
+        .then(function(dataUrl) {
+            let link = document.createElement('a');
+            link.download = 'dialog.png';
+            link.href = dataUrl;
+            link.click();
+        });
+        }, 500);
+    setTimeout(()=>{
+        dialog.propt.style.setProperty("--toggle-render", "auto");
+    }, 1000);
+}
+
 dialog.add("set_default_color", (data) => {
     if (data.length < 2) return;
     dialog.propt.style.setProperty("--default-color", getColor(data[1] ? data[1] : "`o"));
@@ -33,7 +49,7 @@ dialog.add("add_label_with_icon", (data) => {
     
     console.log(text)
     
-    dialog.value += `<div style="font-size: ${small ? "1" : "1.2"}rem;" class="title"><img style="width: ${small ? "20" : "25"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
+    dialog.value += `<div style="font-size: ${small ? "1" : "1.3"}rem;" class="title"><img style="width: ${small ? "15" : "20"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
 });
 dialog.add ("add", (data)=> {
     if (!data[1]) return;
