@@ -61,8 +61,8 @@
     align-items: center;
     font-weight: bold;
     position: absolute;
-    top: 7px;
-    right: 7px;
+    top: 9px;
+    right: 9px;
     z-index: 2;
     opacity: var(--quick-exit-opacity);
 }
