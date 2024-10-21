@@ -9,12 +9,12 @@
     height: fit-content !important;
     width: 100%;
     max-width: 95vw ;
+    max-height: 40vh;
     overflow: var(--toggle-render);
     padding: 20px;
     box-sizing: border-box;
 }
 .dialog {
-    max-height: 40vh;
     max-width: 1000px;
     padding: 10px;
     height: fit-content;
