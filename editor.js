@@ -31,7 +31,15 @@ function run() {
 
 function copy() {
     const input = document.getElementById('code');
-    input.select();
-    input.setSelectionRange(0, 99999);
+    let text = input.value;
+    let modifiedText = text.replace(/\n/g, "\\n");
+    const tempTextarea = document.createElement('textarea');
+    
+    tempTextarea.value = modifiedText;
+    document.body.appendChild(tempTextarea);
+    tempTextarea.select();
+    tempTextarea.setSelectionRange(0, 99999);
     document.execCommand('copy');
+    
+    document.body.removeChild(tempTextarea);
 }
