@@ -24,6 +24,8 @@
     position: relative;
     color: var(--default-color);
     overflow: auto;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 .dialog:before {
     content: '';
@@ -40,12 +42,15 @@
 
 .title {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 10px;
     width: fit-content;
     white-space: nowrap;
+}
+.title > img {
+    width: 25px;
 }
 .title > span {
     white-space: nowrap;
@@ -65,4 +70,5 @@
     right: 9px;
     z-index: 2;
     opacity: var(--quick-exit-opacity);
+    overflow: hidden;
 }

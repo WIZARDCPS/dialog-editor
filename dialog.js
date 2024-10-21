@@ -13,13 +13,15 @@ const dialog = {
 };
 
 dialog.add("set_default_color", (data) => {
+    if (data.length < 2) return;
     dialog.propt.style.setProperty("--default-color", getColor(data[1] ? data[1] : "`o"));
 });
 dialog.add("add_quick_exit", (data) => {
+    if (data.length < 2) return;
     dialog.propt.style.setProperty("--quick-exit-opacity", 1);
 });
 dialog.add("add_label_with_icon", (data) => {
-    if (data.length < 5) return;
+    if (data.length < 6) return;
     const small = (data[1] == "small" ? true : false),
     itemID = data[4];
     
@@ -31,7 +33,7 @@ dialog.add("add_label_with_icon", (data) => {
     
     console.log(text)
     
-    dialog.value += `<div style="font-size: ${small ? "1" : "1.5"}rem;" class="title"><img style="width: ${small ? "20" : "30"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
+    dialog.value += `<div style="font-size: ${small ? "1" : "1.2"}rem;" class="title"><img style="width: ${small ? "20" : "25"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
 });
 dialog.add ("add", (data)=> {
     if (!data[1]) return;

@@ -4,7 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dialog Editor</title>
-        <link href="/styles2.css" rel="stylesheet"/>
+        <meta name="description" content="Growtopia dialog editor with live preview fiture.">
+        <meta name="keywords" content="gtps, gtps3, GOLDPS, gtps4, growtopia private server, growtopia private, growtopia server, growtopia proxy, growtopia forums, growtopia internal, growtopia hack, growtopia account, growtools, gtpshax, editor, dialog editor, growplus">
+        <meta name="author" content="GrowPlus">
+        <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+        <link href="/styles.css" rel="stylesheet"/>
         <link href="/dialog.css" rel="stylesheet">
         <script src="/dialog.js"></script>
         <script src="/editor.js"></script>
@@ -30,15 +34,15 @@
                     <div class="setting">
                         <div class="checkbox">
                             <input type="checkbox" id="live" name="live" onclick="toggle()">
-                            <label for="live">Disable Live Preview</label>
+                            <label for="live">Live Preview</label>
                         </div>
                         <div class="btn">
-                            <button class="run-wrapper">
+                            <button class="run-wrapper" onclick="copy()">
                                 <div class="run">
                                     COPY
                                 </div>
                             </button>
-                            <button class="run-wrapper">
+                            <button class="run-wrapper" onclick="run()">
                                 <div class="run">
                                     RUN
                                 </div>
@@ -60,7 +64,7 @@
                 </div>
                 <div class="editor-wrapper respo">
                     <div class="editor">
-                        hiaha
+                        <!-- hiaha -->
                     </div>
                 </div>
             </div>
