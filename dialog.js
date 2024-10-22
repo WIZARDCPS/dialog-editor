@@ -14,6 +14,7 @@ const dialog = {
 
 function saveImage() {
     dialog.propt.style.setProperty("--toggle-render", "visible");
+    dialog.propt.style.setProperty("--render-width", "1500px");
     setTimeout(()=>{
         domtoimage.toPng(document.getElementById("preview"))
         .then(function(dataUrl) {
@@ -25,6 +26,7 @@ function saveImage() {
         }, 500);
     setTimeout(()=>{
         dialog.propt.style.setProperty("--toggle-render", "auto");
+        dialog.propt.style.setProperty("--render-width", "100%");
     }, 1000);
 }
 

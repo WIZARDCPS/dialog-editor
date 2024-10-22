@@ -2,23 +2,21 @@
     --default-color: #FEE6BA;
     --quick-exit-opacity: 1;
     --toggle-render: auto;
+    --render-width: 100%;
 }
-
 .dialog-wrapper {
     position: relative;
     height: fit-content !important;
-    width: 100%;
-    max-width: 95vw ;
+    width: var(--render-width);
     max-height: 40vh;
     overflow: var(--toggle-render);
     padding: 20px;
     box-sizing: border-box;
 }
 .dialog {
-    max-width: 1000px;
     padding: 10px;
     height: fit-content;
-    background-color: #3B85AC;
+    background-color: hsl(201, 49%, 45%);
     border: 2px solid #88B8CC;
     box-shadow: 1px 1px 0 black;
     border-radius: 5px;
@@ -27,6 +25,8 @@
     overflow: auto;
     font-weight: 600;
     font-size: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: #006a97 #00000000;
 }
 .dialog:before {
     content: '';

@@ -6,6 +6,8 @@
 
 body {
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     background: linear-gradient(140deg, #353243, #262431);
@@ -151,17 +153,8 @@ main {
     scrollbar-color: #5dbb96 #2d2f4100;
 }
 
-textarea::-webkit-scrollbar {
-    width: 8px;
-}
-
-textarea::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-textarea::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 5px;
+textarea::-webkit-scrollbar-thumb, .dialog::-webkit-scrollbar-thumb {
+    border-radius: 5px !important;
 }
 
 .preview-wrapper {
@@ -179,8 +172,27 @@ textarea::-webkit-scrollbar-thumb {
     max-height: 20%;
 }
 
-.respo > .editor {
+.respo {
+    width: 100%;
+    height: fit-content;
+    max-height: none;
+}
+.respo > .editor > .btn {
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    box-sizing: border-box;
+}
+.respo > .editor > .btn > button > div {
+    height: fit-content;
+    font-size: 1rem;
+    padding: 5px;
+    flex: 1;
+    word-break: break-all;
+    box-sizing: content-box;
 }
 
 a:hover, button:hover, input[type=checkbox]:hover, label:hover {
@@ -206,5 +218,8 @@ a:hover, button:hover, input[type=checkbox]:hover, label:hover {
     }
     .dialog-wrapper {
         flex: 1;
+    }
+    .respo > .editor > .btn > button > div {
+        font-size: 0.7rem;
     }
 }
