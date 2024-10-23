@@ -14,7 +14,7 @@ const dialog = {
 
 function saveImage() {
     dialog.propt.style.setProperty("--toggle-render", "visible");
-    dialog.propt.style.setProperty("--render-width", "1500px");
+    dialog.propt.style.setProperty("--render-width", "700px");
     setTimeout(()=>{
         domtoimage.toPng(document.getElementById("preview"))
         .then(function(dataUrl) {
@@ -23,11 +23,11 @@ function saveImage() {
             link.href = dataUrl;
             link.click();
         });
-        }, 500);
+        }, 300);
     setTimeout(()=>{
         dialog.propt.style.setProperty("--toggle-render", "auto");
         dialog.propt.style.setProperty("--render-width", "100%");
-    }, 1000);
+    }, 1500);
 }
 
 dialog.add("set_default_color", (data) => {
@@ -38,6 +38,39 @@ dialog.add("add_quick_exit", (data) => {
     if (data.length < 2) return;
     dialog.propt.style.setProperty("--quick-exit-opacity", 1);
 });
+dialog.add("set_border_color", (data) => {
+    if (data.length < 2) return;
+    let color = data[1].split(',');
+    color[3] = color[3] / 255;
+    data[1] = color.join(',');
+    
+    dialog.propt.style.setProperty("--dialog-border", `rgba(${data[1]})`);
+});
+dialog.add("set_bg_color", (data) => {
+    if (data.length < 2) return;
+    let color = data[1].split(',');
+    color[3] = color[3] / 255;
+    data[1] = color.join(',');
+    console.log(data[1])
+    
+    dialog.propt.style.setProperty("--dialog-bg", `rgba(${data[1]})`);
+});
+dialog.add("add_spacer", (data) => {
+    if (data.length < 3) return;
+    if (data[1] == "small") dialog.value += "<br><br>";
+    else dialog.value += "<br><br><br>";
+});
+dialog.add("add_textbox", (data) => {
+    if (data.length < 3) return;
+    let text = data[1];
+    
+    if (text.match("`")) {
+        text = coloringText(text);
+    }
+    
+    dialog.value += `<p style="font-size: 1rem">${text}<p>`
+})
+
 dialog.add("add_label_with_icon", (data) => {
     if (data.length < 6) return;
     const small = (data[1] == "small" ? true : false),
@@ -48,8 +81,6 @@ dialog.add("add_label_with_icon", (data) => {
     if (text.match("`")) {
         text = coloringText(text);
     }
-    
-    console.log(text)
     
     dialog.value += `<div style="font-size: ${small ? "1" : "1.3"}rem;" class="title"><img style="width: ${small ? "15" : "20"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
 });

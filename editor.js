@@ -43,3 +43,17 @@ function copy() {
     
     document.body.removeChild(tempTextarea);
 }
+
+function saveFile() {
+    const content = document.getElementById('code').value;
+    const blob = new Blob([content], { type: 'text/plain' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'dialog.txt';
+    
+    document.body.appendChild(link);
+    link.click();
+    
+    document.body.removeChild(link);
+}

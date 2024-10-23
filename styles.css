@@ -173,26 +173,24 @@ textarea::-webkit-scrollbar-thumb, .dialog::-webkit-scrollbar-thumb {
 }
 
 .respo {
-    width: 100%;
     height: fit-content;
-    max-height: none;
+} 
+.respo > .setting {
+    height: unset;
+    max-height: unset;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
 }
-.respo > .editor > .btn {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
+.respo > .editor > button {
+    height: 100% !important;
+    border-radius: 0;
+}
+.respo > .editor > button > div {
+    height: 100% !important;
+    border-radius: 0;
     box-sizing: border-box;
-}
-.respo > .editor > .btn > button > div {
-    height: fit-content;
-    font-size: 1rem;
-    padding: 5px;
-    flex: 1;
-    word-break: break-all;
-    box-sizing: content-box;
 }
 
 a:hover, button:hover, input[type=checkbox]:hover, label:hover {
@@ -218,8 +216,5 @@ a:hover, button:hover, input[type=checkbox]:hover, label:hover {
     }
     .dialog-wrapper {
         flex: 1;
-    }
-    .respo > .editor > .btn > button > div {
-        font-size: 0.7rem;
     }
 }

@@ -3,6 +3,8 @@
     --quick-exit-opacity: 1;
     --toggle-render: auto;
     --render-width: 100%;
+    --dialog-bg: rgba(58,126,176,1);
+    --dialog-border: #88B8CC;
 }
 .dialog-wrapper {
     position: relative;
@@ -12,12 +14,15 @@
     overflow: var(--toggle-render);
     padding: 20px;
     box-sizing: border-box;
+    background-image: url("/assets/bg.jpeg");
+    background-position: center;
+    background-size: cover;
 }
 .dialog {
     padding: 10px;
     height: fit-content;
-    background-color: hsl(201, 49%, 45%);
-    border: 2px solid #88B8CC;
+    background-color: var(--dialog-bg);
+    border: 2px solid var(--dialog-border);
     box-shadow: 1px 1px 0 black;
     border-radius: 5px;
     position: relative;
@@ -36,6 +41,7 @@
     left: 0;
     top: 0;
     border-left: 1.2px solid black;
+    border-top: 1.2px solid black;
     border-radius: 5px 5px 0 0;
     box-sizing: border-box;
     overflow: hidden;
