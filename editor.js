@@ -8,6 +8,9 @@ function codeEditor(force = true) {
     if (!livePreview && force) return;
     
     let input = (document.getElementById('code').value).replace(/<CR>/g, "<br>");
+    input = input.replace(/\\n/g, "\n");
+    document.getElementById('code').value = input;
+    
     let line = input.split("\n");
     let preview = document.getElementById('dialog');
     
