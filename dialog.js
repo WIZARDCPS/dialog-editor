@@ -1,4 +1,4 @@
-const dialog = {
+let dialog = {
     commands: {},
     propt: document.documentElement,
     value: "",
@@ -16,7 +16,7 @@ const dialog = {
     }
 };
 
-let already = {
+let sudah = {
     margin: 0
 }
 
@@ -26,7 +26,7 @@ function saveImage() {
     dialog.propt.style.setProperty("--render-height", "unset");
     setTimeout(()=>{
         domtoimage.toPng(document.getElementById("preview"))
-        .then(function(dataUrl) {
+        .then((dataUrl) => {
             let link = document.createElement('a');
             link.download = 'dialog.png';
             link.href = dataUrl;
@@ -68,13 +68,13 @@ dialog.add("set_bg_color", (data) => {
 
 dialog.add("add_custom_margin", (data) => {
     if (data.length < 3) return;
-    if (already.margin) {
+    if (sudah.margin) {
         dialog.value += "</div>";
         dialog.temp.css = "";
         dialog.temp.obj = {};
-        already.margin = 0;
+        toggle.margin = 0;
     }
-    already.margin = 1;
+    else sudah.margin = 1;
     dialog.temp.obj["margin"] = parseObj(data[1]);
     dialog.temp.css += parseCSS(dialog.temp.obj);
     dialog.value += `<div style="${dialog.temp.css}">`;
@@ -105,6 +105,18 @@ dialog.add("add_textbox", (data) => {
     dialog.value += `<p style="font-size: 1rem;${dialog.temp.css}">${text}<p>`
 })
 
+dialog.add("add_label", (data) => {
+    if (data.length < 5) return;
+    const small = (data[1] == "small" ? true : false);
+    
+    let text = data[2];
+    
+    if (text.match("`")) {
+        text = coloringText(text);
+    }
+    
+    dialog.value += `<div style="font-size: ${small ? "1" : "1.3"}rem;${dialog.temp.css}" class="title"><p>${text}</p></div>`;
+});
 dialog.add("add_label_with_icon", (data) => {
     if (data.length < 6) return;
     const small = (data[1] == "small" ? true : false),

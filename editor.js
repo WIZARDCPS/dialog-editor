@@ -7,10 +7,9 @@ function toggle() {
 function codeEditor(force = true) {
     if (!livePreview && force) return;
     
-    let
-    input = (document.getElementById('code').value).replace(/<CR>/g, "<br>"),
-    line = input.split("\n")
-    preview = document.getElementById('dialog');
+    let input = (document.getElementById('code').value).replace(/<CR>/g, "<br>");
+    let line = input.split("\n");
+    let preview = document.getElementById('dialog');
     
     // Reset
     dialog.propt.style.setProperty("--quick-exit-opacity", 0);
