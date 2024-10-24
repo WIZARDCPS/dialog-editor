@@ -2,6 +2,10 @@ const dialog = {
     commands: {},
     propt: document.documentElement,
     value: "",
+    temp: {
+        obj: {},
+        css: ""
+    },
     add(command, handler) {
         this.commands[command] = handler;
     },
@@ -12,9 +16,14 @@ const dialog = {
     }
 };
 
+let already = {
+    margin: 0
+}
+
 function saveImage() {
     dialog.propt.style.setProperty("--toggle-render", "visible");
     dialog.propt.style.setProperty("--render-width", "700px");
+    dialog.propt.style.setProperty("--render-height", "unset");
     setTimeout(()=>{
         domtoimage.toPng(document.getElementById("preview"))
         .then(function(dataUrl) {
@@ -22,12 +31,12 @@ function saveImage() {
             link.download = 'dialog.png';
             link.href = dataUrl;
             link.click();
+            
+            dialog.propt.style.setProperty("--toggle-render", "auto");
+            dialog.propt.style.setProperty("--render-width", "100%");
+            dialog.propt.style.setProperty("--render-height", "40vh");
         });
         }, 300);
-    setTimeout(()=>{
-        dialog.propt.style.setProperty("--toggle-render", "auto");
-        dialog.propt.style.setProperty("--render-width", "100%");
-    }, 1500);
 }
 
 dialog.add("set_default_color", (data) => {
@@ -55,10 +64,35 @@ dialog.add("set_bg_color", (data) => {
     
     dialog.propt.style.setProperty("--dialog-bg", `rgba(${data[1]})`);
 });
+
+
+dialog.add("add_custom_margin", (data) => {
+    if (data.length < 3) return;
+    if (already.margin) {
+        dialog.value += "</div>";
+        dialog.temp.css = "";
+        dialog.temp.obj = {};
+        already.margin = 0;
+    }
+    already.margin = 1;
+    dialog.temp.obj["margin"] = parseObj(data[1]);
+    dialog.temp.css += parseCSS(dialog.temp.obj);
+    dialog.value += `<div style="${dialog.temp.css}">`;
+    dialog.temp.css = "";
+    dialog.temp.obj = {};
+});
+dialog.add("reset_placement_x", (data) => {
+    if (data.length < 2) return;
+    dialog.value += "</div>";
+    dialog.temp.css = "";
+    dialog.temp.obj = {};
+});
+
+
 dialog.add("add_spacer", (data) => {
     if (data.length < 3) return;
-    if (data[1] == "small") dialog.value += "<br><br>";
-    else dialog.value += "<br><br><br>";
+    if (data[1] == "small") dialog.value += "<br>";
+    else dialog.value += "<br><br>";
 });
 dialog.add("add_textbox", (data) => {
     if (data.length < 3) return;
@@ -68,7 +102,7 @@ dialog.add("add_textbox", (data) => {
         text = coloringText(text);
     }
     
-    dialog.value += `<p style="font-size: 1rem">${text}<p>`
+    dialog.value += `<p style="font-size: 1rem;${dialog.temp.css}">${text}<p>`
 })
 
 dialog.add("add_label_with_icon", (data) => {
@@ -82,7 +116,7 @@ dialog.add("add_label_with_icon", (data) => {
         text = coloringText(text);
     }
     
-    dialog.value += `<div style="font-size: ${small ? "1" : "1.3"}rem;" class="title"><img style="width: ${small ? "15" : "20"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
+    dialog.value += `<div style="font-size: ${small ? "1" : "1.3"}rem;${dialog.temp.css}" class="title"><img style="width: ${small ? "15" : "20"}px; height: auto;" src="https://gtpshax.github.io/DialogGTPS/src/assets/items/${itemID}.png" alt="${itemID}"><p>${text}</p></div>`;
 });
 dialog.add ("add", (data)=> {
     if (!data[1]) return;
@@ -181,4 +215,68 @@ function coloringText(text) {
         result += `<span style="color: ${getColor(parts[i].color)}">${parts[i].text} </span>`;
         if (i == parts.length - 1) return result;
     }
+}
+
+function parseObj(input) {
+    return Object.fromEntries(
+        input.split(';').map(param => {
+            const [key, value] = param.split(':');
+            return [key, value !== undefined ? (isNaN(value) ? value : parseInt(value, 10)) : 0];
+        })
+    );
+}
+
+function parseCSS(styles) {
+    if (!styles) return "";
+    return Object.entries(styles).map(([property, values]) => {
+        const { x = 0, y = 0 } = values;
+
+        switch (property) {
+            case 'margin':
+                return `margin-top: ${y/150}in; margin-left: ${x/150}in;`;
+            case 'padding':
+                return `padding-top: ${y/150}in; padding-left: ${x/150}in;`;
+            case 'border':
+            case 'borderWidth':
+                return `border-width: ${y/150}in ${x/150}in;`;
+            case 'borderRadius':
+            case 'outlineWidth':
+                return `${property}: ${x}cm;`;
+            case 'top':
+                return `top: ${y};`;
+            case 'left':
+                return `left: ${x};`;
+            case 'width':
+            case 'height':
+            case 'fontSize':
+            case 'lineHeight':
+            case 'letterSpacing':
+                return `${property}: ${x}cm;`;
+            case 'color':
+            case 'backgroundColor':
+            case 'borderColor':
+                return `${property}: rgba(${x}, ${y}, 255, 1);`;
+            case 'display':
+            case 'position':
+            case 'overflow':
+            case 'visibility':
+            case 'float':
+                return `${property}: ${x};`;
+            case 'opacity':
+                return `${property}: ${x};`;
+            case 'textAlign':
+            case 'verticalAlign':
+                return `${property}: ${x};`;
+            case 'flex':
+            case 'flexGrow':
+            case 'flexShrink':
+                return `${property}: ${x};`;
+            case 'boxShadow':
+                return `${property}: 0 0 ${x}px rgba(0, 0, 0, 0.5);`;
+            case 'textShadow':
+                return `${property}: ${x}px ${y}px rgba(0, 0, 0, 0.5);`;
+            default:
+                return `${property}: ${x}px;`;
+        }
+    }).join(' ');
 }

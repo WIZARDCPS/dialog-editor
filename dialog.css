@@ -3,6 +3,7 @@
     --quick-exit-opacity: 1;
     --toggle-render: auto;
     --render-width: 100%;
+    --render-height: 40vh;
     --dialog-bg: rgba(58,126,176,1);
     --dialog-border: #88B8CC;
 }
@@ -10,13 +11,14 @@
     position: relative;
     height: fit-content !important;
     width: var(--render-width);
-    max-height: 40vh;
+    max-height: var(--render-height);
     overflow: var(--toggle-render);
     padding: 20px;
     box-sizing: border-box;
     background-image: url("/assets/bg.jpeg");
     background-position: center;
     background-size: cover;
+    background-repeat: repeat;
 }
 .dialog {
     padding: 10px;
