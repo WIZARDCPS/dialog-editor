@@ -14,38 +14,32 @@
     <script src="/dialog.js"></script>
     <script src="/editor.js"></script>
     <style>
-        .bottom-text {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            padding: 20px;
-            margin: 0;
-            border: 2px solid transparent; /* Border transparan untuk efek */
-            border-radius: 10px;
-            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            background-clip: border-box; /* Memotong latar belakang ke border */
-            color: transparent; /* Membuat teks transparan untuk efek warna */
-            background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-            -webkit-background-clip: text; /* Memotong latar belakang ke teks */
-            background-clip: text; /* Memotong latar belakang ke teks */
-            animation: colorChange 5s linear infinite; /* Menambahkan animasi */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
-            width: 100%; /* Memastikan lebar penuh */
-            position: relative; /* Memastikan posisi relatif */
-            bottom: 0; /* Memastikan berada di bawah */
-        }
-
-        @keyframes colorChange {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
         .info-box {
             background-color: rgba(255, 255, 255, 0.1); /* Latar belakang transparan */
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0; /* Margin untuk jarak */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
+            width: 80%; /* Lebar kotak */
+            max-width: 800px; /* Maksimal lebar kotak */
+            margin-left: auto; /* Centering */
+            margin-right: auto; /* Centering */
+            text-align: center; /* Centering text */
+        }
+
+        .bottom-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: transparent; /* Membuat teks transparan untuk efek warna */
+            background-image: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text; /* Memotong latar belakang ke teks */
+            background-clip: text; /* Memotong latar belakang ke teks */
+            animation: colorChange 5s linear infinite; /* Menambahkan animasi */
+        }
+
+        @keyframes colorChange {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
     </style>
 </head>
@@ -110,9 +104,26 @@
         </div>
     </main>
     <div class="info-box">
-        <div class="bottom-text">
-            tes sigma boy.
-        </div>
+        <div class="bottom-text" id="dynamicText">tes sigma boy.</div>
     </div>
+
+    <script>
+        const texts = [
+            "tes sigma boy.",
+            "Welcome to the tutorial!",
+            "Enjoy creating your dialog!",
+            "Have fun with Growtopia!",
+            "Explore new features!"
+        ];
+
+        let index = 0;
+
+        function changeText() {
+            index = (index + 1) % texts.length; // Mengubah indeks
+            document.getElementById("dynamicText").textContent = texts[index]; // Mengubah teks
+        }
+
+        setInterval(changeText, 3000); // Mengubah teks setiap 3 detik
+    </script>
 </body>
 </html>
