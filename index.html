@@ -79,52 +79,31 @@
                         <input type="checkbox" id="live" name="live" onclick="toggle()">
                         <label for="live">Live Preview</label>
                     </div>
-                    <div class="btn">
-                        <button class="run-wrapper" onclick="copy()">
-                            <div class="run">COPY</div>
-                        </button>
-                        <button class="run-wrapper" onclick="run()">
-                            <div class="run">RUN</div>
-                        </button>
-                        <button class="run-wrapper" onclick="showTutorial()">
-                            <div class="run">TUTORIAL</div>
-                        </button>
-                    </div>
+                    <button onclick="toggleInfoBox()">Show Info</button> <!-- Tombol untuk menampilkan info -->
                 </div>
-                <textarea id="code" spellcheck="false" placeholder="Start Create Dialog..." oninput="codeEditor()"></textarea>
             </div>
         </div>
-        <div class="preview-wrapper">
-            <div class="dialog-wrapper" id="preview">
-                <div class="dialog quick_exit">&#10005;</div>
-                <div class="dialog" id="dialog">
-                    <div class="title">
-                        <img src="https://gtpshax.github.io/DialogGTPS/src/assets/items/32.png" alt="32">
-                        Welcome to Create Dashboard Dialog
-                    </div>
-                </div>
-            </div>
-            <div class="editor-wrapper respo">
-                <div class="editor setting" style="flex-direction: row;">
-                    <button class="saweria-wrapper" onclick="saveImage()">
-                        <div class="saweria">Save preview as image</div>
-                    </button>
-                    <button class="saweria-wrapper" onclick="saveFile()">
-                        <div class="saweria">Save code as file</div>
-                    </button>
-                    <button class="saweria-wrapper" onclick="">
-                        <div class="saweria">Configuration</div>
-                    </button>
-                </div>
-            </div>
+        
+        <div class="info-box" id="infoBox">
+            <button class="close-btn" onclick="closeInfoBox()">×</button>
+            <h2>Informasi Penting</h2>
+            <p>Ini adalah kotak informasi yang memberikan detail lebih lanjut tentang fitur Live Preview.</p>
+            <p>Aktifkan fitur ini untuk melihat perubahan secara langsung saat Anda mengedit dialog.</p>
         </div>
     </main>
-    
-    <div class="info-box" id="tutorialBox">
-        <button class="close-btn" onclick="closeTutorial()">X</button>
-        <div class="bottom-text" id="dynamicText">tes tutorial</div>
-    </div>
-
     <script>
-        function showTutorial() {
-            const tutorialBox = document
+        function toggleInfoBox() {
+            const infoBox = document.getElementById('infoBox');
+            if (infoBox.style.display === 'none' || infoBox.style.display === '') {
+                infoBox.style.display = 'block'; // Tampilkan kotak
+            } else {
+                infoBox.style.display = 'none'; // Sembunyikan kotak
+            }
+        }
+
+        function closeInfoBox() {
+            document.getElementById('infoBox').style.display = 'none'; // Sembunyikan kotak
+        }
+    </script>
+</body>
+</html>
