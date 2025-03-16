@@ -125,31 +125,28 @@
         </div>
         
         <div class="info-box" id="infoBox">
-            <button class="close-btn" onclick="closeInfoBox()">×</button>
-            <h2>Tutorial Dialog</h2>
-            <p>Pertama Kalian Bikin Dulu Dialog Nya
-               Contoh :
-                        set_default_color|`o
-add_label_with_icon|big|`wGet a GrowID``|left|206|
-add_spacer|small|
-add_textbox|" + (r_.empty() ? "By choosing a `wGrowID``, you can use a name and password to logon from any device.Your `wname`` will be shown to other players!" : r_) + "|left|
-add_spacer|small|
-add_text_input|username|Name|" + a_ + "|18|
-add_textbox|Your `wpassword`` must contain `w8 to 18 characters, 1 letter, 1 number`` and `w1 special character: @#!$^&*.,``|left|
-add_text_input_password|password|Password|" + b_ + "|18|
-add_text_input_password|password_verify|Password Verify|" + c_ + "|18|
-add_textbox|Your `wemail`` will only be used for account verification and support. If you enter a fake email, you can't verify your account, recover or change your password.|left|
-add_text_input|email|Email|" + d_ + "|64|
-add_textbox|We will never ask you for your password or email, never share it with anyone!|left|
-add_button|back|Back|noflags|
-add_custom_button|Get_GrowID|textLabel:`2Get My GrowID;anchor:_button_back;left:1;margin:40,0;|
-end_dialog|Login_Regis_Handle|||
-";
-	Itu Contoh Saja
-
-             </p>
-            <p>Kalau Kalian Sudah Taro Dialog Kalian, Kalian Tinggal Pasang Dan Run, Maka akn muncul dialog kalian di sebelah kanan </p>
-        </div>
+    <button class="close-btn" onclick="closeInfoBox()">×</button>
+    <h2>Tutorial Dialog</h2>
+    <p>Pertama Kalian Bikin Dulu Dialog Nya<br>
+       Contoh :<br>
+       set_default_color|`o<br>
+       add_label_with_icon|big|`wGet a GrowID``|left|206|<br>
+       add_spacer|small|<br>
+       add_textbox|" + (r_.empty() ? "By choosing a `wGrowID``, you can use a name and password to logon from any device. Your `wname`` will be shown to other players!" : r_) + "|left|<br>
+       add_spacer|small|<br>
+       add_text_input|username|Name|" + a_ + "|18|<br>
+       add_textbox|Your `wpassword`` must contain `w8 to 18 characters, 1 letter, 1 number`` and `w1 special character: @#!$^&*.,``|left|<br>
+       add_text_input_password|password|Password|" + b_ + "|18|<br>
+       add_text_input_password|password_verify|Password Verify|" + c_ + "|18|<br>
+       add_textbox|Your `wemail`` will only be used for account verification and support. If you enter a fake email, you can't verify your account, recover or change your password.|left|<br>
+       add_text_input|email|Email|" + d_ + "|64|<br>
+       add_textbox|We will never ask you for your password or email, never share it with anyone!|left|<br>
+       add_button|back|Back|noflags|<br>
+       add_custom_button|Get_GrowID|textLabel:`2Get My GrowID;anchor:_button_back;left:1;margin:40,0;|<br>
+       end_dialog|Login_Regis_Handle|||
+    </p>
+    <p>Kalau Kalian Sudah Taro Dialog Kalian, Kalian Tinggal Pasang Dan Run, Maka akan muncul dialog kalian di sebelah kanan.</p>
+</div>
     </main>
     <script>
         function toggleInfoBox() {
