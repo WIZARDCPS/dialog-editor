@@ -15,6 +15,7 @@
     <script src="/editor.js"></script>
     <style>
         .info-box {
+            display: none; /* Awalnya sembunyikan kotak */
             background-color: rgba(255, 255, 255, 0.1); /* Latar belakang transparan */
             border-radius: 10px;
             padding: 20px;
@@ -106,12 +107,14 @@
             </div>
         </div>
     </main>
-    <div class="info-box">
-        <div class="bottom-text" id="dynamicText">Welcome to the tutorial!</div>
+    <div class="info-box" id="tutorialBox">
+        <div class="bottom-text" id="dynamicText">tes tutorial</div>
     </div>
 
     <script>
         function showTutorial() {
+            const tutorialBox = document.getElementById("tutorialBox");
+            tutorialBox.style.display = "block"; // Menampilkan kotak tutorial
             document.getElementById("dynamicText").textContent = "tes tutorial"; // Mengubah teks menjadi "tes tutorial"
         }
     </script>
