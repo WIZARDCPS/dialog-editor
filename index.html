@@ -111,26 +111,9 @@
     </div>
 
     <script>
-        const texts = [
-            "Welcome to the tutorial!",
-            "Enjoy creating your dialog!",
-            "Have fun with Growtopia!",
-            "Explore new features!",
-            "Credit By @Oxgyen"
-        ];
-
-        let index = 0;
-
-        function changeText() {
-            index = (index + 1) % texts.length; // Mengubah indeks
-            document.getElementById("dynamicText").textContent = texts[index]; // Mengubah teks
-        }
-
         function showTutorial() {
             document.getElementById("dynamicText").textContent = "tes tutorial"; // Mengubah teks menjadi "tes tutorial"
         }
-
-        setInterval(changeText, 3000); // Mengubah teks setiap 3 detik
     </script>
 </body>
 </html>
