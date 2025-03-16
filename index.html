@@ -16,16 +16,28 @@
     <style>
         .info-box {
             display: none; /* Awalnya sembunyikan kotak */
-            background-color: rgba(255, 255, 255, 0.1); /* Latar belakang transparan */
+            position: fixed; /* Posisi tetap */
+            top: 50%; /* Posisikan di tengah vertikal */
+            left: 50%; /* Posisikan di tengah horizontal */
+            transform: translate(-50%, -50%); /* Menggeser kotak ke tengah */
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih transparan */
             border-radius: 10px;
             padding: 20px;
-            margin: 20px 0; /* Margin untuk jarak */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
             width: 80%; /* Lebar kotak */
-            max-width: 800px; /* Maksimal lebar kotak */
-            margin-left: auto; /* Centering */
-            margin-right: auto; /* Centering */
+            max-width: 400px; /* Maksimal lebar kotak */
             text-align: center; /* Centering text */
+            z-index: 1000; /* Pastikan kotak di atas elemen lain */
+        }
+
+        .close-btn {
+            position: absolute; /* Posisi absolut untuk tombol close */
+            top: 10px; /* Jarak dari atas */
+            right: 10px; /* Jarak dari kanan */
+            background: none; /* Tanpa latar belakang */
+            border: none; /* Tanpa border */
+            font-size: 20px; /* Ukuran font */
+            cursor: pointer; /* Kursor pointer */
         }
 
         .bottom-text {
@@ -107,16 +119,12 @@
             </div>
         </div>
     </main>
+    
     <div class="info-box" id="tutorialBox">
+        <button class="close-btn" onclick="closeTutorial()">X</button>
         <div class="bottom-text" id="dynamicText">tes tutorial</div>
     </div>
 
     <script>
         function showTutorial() {
-            const tutorialBox = document.getElementById("tutorialBox");
-            tutorialBox.style.display = "block"; // Menampilkan kotak tutorial
-            document.getElementById("dynamicText").textContent = "tes tutorial"; // Mengubah teks menjadi "tes tutorial"
-        }
-    </script>
-</body>
-</html>
+            const tutorialBox = document
